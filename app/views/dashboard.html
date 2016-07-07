@@ -18,11 +18,47 @@
             </div>
         </div><!-- end of header content-->
         <div class="maincontent">
-            <h3>User logged on</h3>
-                <p>Welcome {{ users['first_name'] }} {{ users['last_name'] }}</p>
+            <div class="row">
+                <h3>Welcome {{ session['name'] }}</h3>
+                <p>Your id is: {{ session['id'] }}</p>
+                <a href="/logout">Logout</a>
+            </div>
+            <div class="row">
+                <h2>Your trip schedule</h2>
+                <table>
+                    <tr>
+                        <th>Destination</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Plan</th>
+                    </tr>
+                        <td>Placeholder destination</td>
+                        <td>8/1/2016</td>
+                        <td>8/15/2016</td>
+                        <td>Playing with family</td>
+                </table>
+            </div>
+            <div class="row">
+            <h2>Other User's Travel Plans</h2>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Destination</th>
+                        <th>Travel Start Date</th>
+                        <th>Travel End Date</th>
+                        <th>Do you want to join?</th>
+                    </tr>
+                        <td>Placeholder Bagheera Fry</td>
+                        <td>Doggy land</td>
+                        <td>8/1/2016</td>
+                        <td>8/15/2016</td>
+                        <td>Join</td>
+                </table>
+            </div>
+                <!-- <p>Welcome {{ users['first_name'] }} {{ users['last_name'] }}</p>
                 <p>Your email is: {{ users['email'] }}</p>
-                <p>Your id is: {{ users['id'] }}</p>
-            <a href="/logout">Logout</a>
+                 -->
+            
         </div><!-- end of main content-->
         <div class="footer">
             <p>created by: Amanda Fry</p>
