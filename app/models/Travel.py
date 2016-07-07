@@ -9,9 +9,9 @@
 """
 from system.core.model import Model
 
-class WelcomeModel(Model):
+class Travel(Model):
     def __init__(self):
-        super(WelcomeModel, self).__init__()
+        super(Travel, self).__init__()
     """
     Below is an example of a model method that queries the database for all users in a fictitious application
     
