@@ -36,7 +36,12 @@ class Users(Controller):
             #checking to make sure I got the correct info in session
             # print 'I am seesion id ', session['id']
             # print 'I am session name', session['name']
-            return self.load_view('dashboard.html', users=users['users'])
+            # return self.load_view('dashboard.html', users=users['users'])
+            return redirect('/dashboard')
+
+    def dashboard(self):
+            return self.load_view('dashboard.html')
+
 
     def logout(self):
         # when login out cleared out the id and name of the user who logged in
