@@ -1,5 +1,6 @@
 from system.core.model import Model
 from flask import Flask, flash, session
+from datetime import datetime
 import re
 
 NOSPACE_REGEX = re.compile(r'^[a-zA-Z0-9]*$')
@@ -47,6 +48,11 @@ class Travel(Model):
         print ('*' * 25)
         print trip_info
         print ('*' * 25)
+
+        today = datetime.now().strftime("%Y-%m-%d")
+        print ('^' * 25)
+        print today
+        print ('^' * 25)
         
         if len(trip_info['destination']) < 2:
             travel_erorrs.append("Please enter a valid destination")
@@ -54,6 +60,12 @@ class Travel(Model):
             travel_erorrs.append("Please enter a valid plan")
         elif not NOSPACE_REGEX.match(trip_info['plan']):
             travel_erorrs.append("Plan cannot be just spaces")
+        elif today > trip_info['start_date']:
+            travel_erorrs.append("Start date must be in the future")
+        elif today > trip_info['end_date']:
+            travel_erorrs.append("End date must be in the future")
+        elif trip_info['start_date'] >= trip_info['end_date']:
+            travel_erorrs.append("Start date must be before end date")
         if travel_erorrs:
             return {"status": False, "errors": travel_erorrs}
         else:
