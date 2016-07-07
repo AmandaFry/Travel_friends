@@ -42,7 +42,6 @@ class Users(Controller):
     def dashboard(self):
             return self.load_view('dashboard.html')
 
-
     def logout(self):
         # when login out cleared out the id and name of the user who logged in
         session.clear()

@@ -1,13 +1,8 @@
-""" 
-    Sample Model File
-
-    A Model should be in charge of communicating with the Database. 
-    Define specific model method that query the database for information.
-    Then call upon these model method in your controller.
-
-    Create a model using this template.
-"""
 from system.core.model import Model
+from flask import Flask, flash, session
+import re
+
+NOSPACE_REGEX = re.compile(r'^[a-zA-Z0-9]*$')
 
 class Travel(Model):
     def __init__(self):
@@ -38,7 +33,10 @@ class Travel(Model):
         return self.db.query_db(query, data)
 
     """
+    
+
     def add_trip(self, trip_info):
+        travel_erorrs = []
         print "I made it to travel model"
         trip_info = {
             'destination' : trip_info['destination'],
@@ -46,5 +44,17 @@ class Travel(Model):
             'start_date' : trip_info['start_date'],
             'end_date' : trip_info['end_date']
         }
+        print ('*' * 25)
         print trip_info
-        return {"status": True}
+        print ('*' * 25)
+        
+        if len(trip_info['destination']) < 2:
+            travel_erorrs.append("Please enter a valid destination")
+        elif len(trip_info['plan']) < 2:
+            travel_erorrs.append("Please enter a valid plan")
+        elif not NOSPACE_REGEX.match(trip_info['plan']):
+            travel_erorrs.append("Plan cannot be just spaces")
+        if travel_erorrs:
+            return {"status": False, "errors": travel_erorrs}
+        else:
+            return {"status": True}

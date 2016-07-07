@@ -1,7 +1,6 @@
 from system.core.controller import *
 from system.core.model import Model
 from flask import Flask, flash, session
-import re
 
 class Travel(Controller):
     def __init__(self, action):
@@ -19,7 +18,13 @@ class Travel(Controller):
             'start_date' : request.form['start_date'],
             'end_date' : request.form['end_date']
         }
-        # print trip_info
         trips = self.models['Travel'].add_trip(trip_info)
-        return self.load_view('addplan.html')
+
+        if  trips['status'] == False:
+            #switch error message from array to Falsh and redirect to login page again
+            for message in trips['errors']:
+                flash(message)
+            return self.load_view('addplan.html')
+        else:
+            return self.load_view('addplan.html')
 

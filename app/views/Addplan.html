@@ -23,6 +23,16 @@
                 <a href="/dashboard">Home</a>
                 <a href="/logout">Logout</a>
             </div>
+            <div class="row">
+                <!-- Flas message to communicate errors -->
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red; margin-left: 25%">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
             <form action="/add_plan" method="POST">
                 <div class="row">
                     Destination: <input type="text" name="destination">
