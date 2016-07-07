@@ -18,9 +18,28 @@
             </div>
         </div><!-- end of header content-->
         <div class="maincontent">
-            <h1>Add new trip</h1>
-            <a href="/dashboard">Home</a>
-            <a href="/logout">Logout</a>
+            <div class="row">
+                <h1>Add new trip</h1>
+                <a href="/dashboard">Home</a>
+                <a href="/logout">Logout</a>
+            </div>
+            <form action="/add_plan" method="POST">
+                <div class="row">
+                    Destination: <input type="text" name="destination">
+                </div>
+                <div class="row">
+                    Plan description: <input type="text" name="plan">
+                </div>
+                <div class="row">
+                    Start date: <input type="text" name="start_date">
+                </div>
+                <div class="row">
+                    End Date: <input type="text" name="end_date">
+                </div>
+                <div class="row">
+                    <input type="submit" name="add" value="Add">
+                </div>
+            </form>
             
         </div><!-- end of main content-->
         <div class="footer">

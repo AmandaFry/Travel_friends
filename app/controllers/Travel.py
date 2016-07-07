@@ -1,28 +1,25 @@
-"""
-    Sample Controller File
-
-    A Controller should be in charge of responding to a request.
-    Load models to interact with the database and load views to render them to the client.
-
-    Create a controller using this template
-"""
 from system.core.controller import *
+from system.core.model import Model
+from flask import Flask, flash, session
+import re
 
 class Travel(Controller):
     def __init__(self, action):
         super(Travel, self).__init__(action)
-        """
-            This is an example of loading a model.
-            Every controller has access to the load_model method.
-        """
         self.load_model('Travel')
         # self.db = self._app.db
 
-        """
-        
-        This is an example of a controller method that will load a view for the client 
-
-        """
-
     def add_travel(self):
         return self.load_view('addplan.html')
+
+    def add_plan(self):
+        trip_info = {
+            'destination' : request.form['destination'],
+            'plan' : request.form['plan'],
+            'start_date' : request.form['start_date'],
+            'end_date' : request.form['end_date']
+        }
+        # print trip_info
+        trips = self.models['Travel'].add_trip(trip_info)
+        return self.load_view('addplan.html')
+

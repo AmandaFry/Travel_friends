@@ -38,3 +38,13 @@ class Travel(Model):
         return self.db.query_db(query, data)
 
     """
+    def add_trip(self, trip_info):
+        print "I made it to travel model"
+        trip_info = {
+            'destination' : trip_info['destination'],
+            'plan' : trip_info['plan'],
+            'start_date' : trip_info['start_date'],
+            'end_date' : trip_info['end_date']
+        }
+        print trip_info
+        return {"status": True}

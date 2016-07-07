@@ -22,6 +22,7 @@ routes['GET']['/dashboard'] = 'Users#dashboard'
 routes['GET']['/logout'] = 'Users#logout'
 routes['POST']['/process_registration'] = 'Users#process_registration'
 routes['GET']['/travel/add'] = 'Travel#add_travel'
+routes['POST']['/add_plan'] = 'Travel#add_plan'
 """
     You can add routes and specify their handlers as follows:
 
