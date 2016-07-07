@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <meta charset="UTF-8">
+	<title>TODO: Title goes here</title>
+	<meta name="description" content="TODO: description goes here ">
+    <!-- linking a css style sheet -->
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+	<link rel="stylesheet" type="text/css" href="/static/css/AmandaTemplate.css">
+   </head>
+<body>	
+    <div class="container">
+        <div class="header">
+            <h1><span>(Pylot) </span> User Login and Registration</h1>
+            <h3>Assigment - optional</h3>
+            <div class="descr">
+                <p>Assigment description: User login and registration with validation</p>
+            </div>
+        </div><!-- end of header content-->
+        <div class="maincontent">
+            <h3>User logged on</h3>
+                <p>Welcome {{ users['first_name'] }} {{ users['last_name'] }}</p>
+                <p>Your email is: {{ users['email'] }}</p>
+                <p>Your id is: {{ users['id'] }}</p>
+            <a href="/logout">Logout</a>
+        </div><!-- end of main content-->
+        <div class="footer">
+            <p>created by: Amanda Fry</p>
+            <a class="footerSpace" href="mailto:FeAmandaF@hotmail.com">FeAmandaF@hotmail.com</a>
+            <a href="https://www.linkedin.com/in/amandafry1">Amanda's LinkedIn profile</a>
+        </div><!-- end of footer -->
+      </div><!-- end of container -->
+</body>
+</html>
