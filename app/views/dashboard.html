@@ -62,7 +62,7 @@
                                 <td><a href="/details/{{ others_trip['id'] }}">{{ others_trip['destination'] }}</a></td>
                                 <td>{{ others_trip['start_date'] }}</td>
                                 <td>{{ others_trip['end_date'] }}</td>
-                                <td>{{ others_trip['id'] }}</td>
+                                <td><a href="/join/{{ others_trip['id'] }}">Join</a></td>
                             </tr>
                         {% endfor %}
                     {% endif %}

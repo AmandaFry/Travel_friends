@@ -24,6 +24,7 @@ routes['POST']['/process_registration'] = 'Users#process_registration'
 routes['GET']['/travel/add'] = 'Travel#add_travel'
 routes['POST']['/add_plan'] = 'Travel#add_plan'
 routes['GET']['/details/<id>'] = 'Travel#details'
+routes['GET']['/join/<id>'] = 'Travel#join_trip'
 """
     You can add routes and specify their handlers as follows:
 

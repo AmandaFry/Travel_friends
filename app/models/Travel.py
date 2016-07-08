@@ -95,3 +95,17 @@ class Travel(Model):
         # result_mytrip = self.db.get_one(query, data)
         # return {"status": True, 'mytrips': mytrips}
         return self.db.query_db(query, data)
+
+    def trip_details(self, id):
+        query = "SELECT users.first_name, users.last_name, trips.destination, trips.plan, trips.start_date, trips.end_date FROM users JOIN trips ON users.id = trips.organizer_id WHERE trips.id = :id"
+        # query = "SELECT * from trips where id = :id"
+        data = {'id': id}
+        return self.db.query_db(query, data)
+
+    def join_trip(self, id):
+        query = "INSERT into travel_friends (trip_id, friend_id, created_at, updated_at) values(:trip_id, :friend_id, NOW(), NOW())"
+        data = {
+            'trip_id': id,
+            'friend_id': session['id'] 
+        }
+        return self.db.query_db(query, data) #run the insert

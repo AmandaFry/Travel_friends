@@ -41,4 +41,15 @@ class Travel(Controller):
         return self.load_view('dashboard.html', mytrips=mytrips, others_trips=others_trip)
 
     def details(self, id):
-        return self.load_view('details.html')
+        trip_details = self.models['Travel'].trip_details(id)
+        print ('~' * 25)
+        print trip_details
+        print ('~' * 25)
+        return self.load_view('details.html', trip_details=trip_details)
+
+    def join_trip(self, id):
+        join_trip = self.models['Travel'].join_trip(id)
+        print ('/' * 25)
+        print join_trip
+        print ('/' * 25)
+        return redirect('/dashboard')

@@ -22,18 +22,18 @@
                 <a href="/dashboard">Home</a>
                 <a href="/logout">Logout</a>
             </div>
-            <h1></h1>
+            <h2>{{ trip_details[0]['destination']}}</h2>
                 <div class="row">
-                    <p>Planned by: </p>
+                    <p>Planned by: {{ trip_details[0]['first_name']}} {{ trip_details[0]['Last_name']}}</p>
                 </div>
                 <div class="row">
-                    Description: 
+                    <p>Description: {{ trip_details[0]['plan']}}</p>
                 </div>
                 <div class="row">
-                    Travel Start date: 
+                    <p>Travel Start date: {{ trip_details[0]['start_date']}}</p>
                 </div>
                 <div class="row">
-                    Travle End Date: 
+                    <p>Travle End Date: {{ trip_details[0]['end_date']}}</p>
                 </div>
             <h3>Other users' joining the trip: </h3>
                 <div class="row">
