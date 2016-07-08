@@ -86,4 +86,12 @@ class Travel(Model):
         data = {'id': session['id']}
         # result_mytrip = self.db.get_one(query, data)
         # return {"status": True, 'mytrips': mytrips}
-        return self.db.get_one(query, data)
+        return self.db.query_db(query, data)
+
+    def others_trip(self):
+        # query = "SELECT * from trips where organizer_id != :id"
+        query = "SELECT users.first_name, users.last_name, trips.destination, trips.start_date, trips.end_date, trips.id FROM users JOIN trips ON users.id = trips.organizer_id WHERE organizer_id != :id"
+        data = {'id': session['id']}
+        # result_mytrip = self.db.get_one(query, data)
+        # return {"status": True, 'mytrips': mytrips}
+        return self.db.query_db(query, data)

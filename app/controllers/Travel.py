@@ -33,5 +33,12 @@ class Travel(Controller):
         mytrips = self.models['Travel'].my_trip()
         print ('%' * 25)
         print mytrips
+        print ('!' * 25)
+        others_trip = self.models['Travel'].others_trip()
         print ('%' * 25)
-        return self.load_view('dashboard.html', mytrips=mytrips)
+        print others_trip
+        print ('!' * 25)
+        return self.load_view('dashboard.html', mytrips=mytrips, others_trips=others_trip)
+
+    def details(self, id):
+        return self.load_view('details.html')
