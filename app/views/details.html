@@ -33,12 +33,16 @@
                     <p>Travel Start date: {{ trip_details[0]['start_date']}}</p>
                 </div>
                 <div class="row">
-                    <p>Travle End Date: {{ trip_details[0]['end_date']}}</p>
+                    <p>Travel End Date: {{ trip_details[0]['end_date']}}</p>
                 </div>
             <h3>Other users' joining the trip: </h3>
-                <div class="row">
-                    
-                </div>
+                {% if friends_joined %}
+                    {% for joined in friends_joined %}
+                        <div class="row">
+                            <p>{{ joined['first_name'] }} {{ joined['last_name'] }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
 
         </div><!-- end of main content-->
         <div class="footer">

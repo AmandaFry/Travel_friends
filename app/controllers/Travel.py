@@ -33,19 +33,24 @@ class Travel(Controller):
         mytrips = self.models['Travel'].my_trip()
         print ('%' * 25)
         print mytrips
-        print ('!' * 25)
-        others_trip = self.models['Travel'].others_trip()
         print ('%' * 25)
+        trip_joined = self.models['Travel'].trip_joined()
+        print ('$' * 25)
+        print trip_joined
+        print ('$' * 25)
+        others_trip = self.models['Travel'].others_trip()
+        print ('!' * 25)
         print others_trip
         print ('!' * 25)
-        return self.load_view('dashboard.html', mytrips=mytrips, others_trips=others_trip)
+        return self.load_view('dashboard.html', mytrips=mytrips, trips_joined=trip_joined, others_trips=others_trip)
 
     def details(self, id):
         trip_details = self.models['Travel'].trip_details(id)
         print ('~' * 25)
         print trip_details
         print ('~' * 25)
-        return self.load_view('details.html', trip_details=trip_details)
+        friends_joined = self.models['Travel'].friends_joined(id)
+        return self.load_view('details.html', trip_details=trip_details, friends_joined=friends_joined)
 
     def join_trip(self, id):
         join_trip = self.models['Travel'].join_trip(id)

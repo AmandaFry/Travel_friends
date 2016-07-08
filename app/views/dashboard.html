@@ -35,11 +35,21 @@
                 {% if mytrips %}
                     {% for mytrip in mytrips %}
                      <tr>   
-                            <td>{{ mytrip['destination'] }}</td>
+                            <td><a href="/details/{{ mytrip['id'] }}">{{ mytrip['destination'] }}</a></td>
                             <td>{{ mytrip['start_date'] }}</td>
                             <td>{{ mytrip['end_date'] }}</td>
                             <td>{{ mytrip['plan'] }}</td>
                      </tr>   
+                    {% endfor %}
+                {% endif %}
+                {% if trips_joined %}
+                    {% for trip_joined in trips_joined %}
+                        <tr>   
+                            <td><a href="/details/{{ trip_joined['id'] }}">{{ trip_joined['destination'] }}</a></td>
+                            <td>{{ trip_joined['start_date'] }}</td>
+                            <td>{{ trip_joined['end_date'] }}</td>
+                            <td>{{ trip_joined['plan'] }}</td>
+                        </tr>
                     {% endfor %}
                 {% endif %}
 
