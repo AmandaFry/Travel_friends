@@ -70,7 +70,7 @@ class Travel(Model):
         if travel_erorrs:
             return {"status": False, "errors": travel_erorrs}
         else:
-            sql = "INSERT into trips (organizer_id, destination, plan, start_date, end_date, created_at, updated_at) values(:organizer_id, :destination, :plan, :start_date, end_date, NOW(), NOW())"
+            sql = "INSERT into trips (organizer_id, destination, plan, start_date, end_date, created_at, updated_at) values(:organizer_id, :destination, :plan, :start_date, :end_date, NOW(), NOW())"
             data = {
                 'organizer_id': session['id'], 
                 'destination': trip_info['destination'],
@@ -80,3 +80,10 @@ class Travel(Model):
             }
             self.db.query_db(sql, data) #run the insert
             return {"status": True}
+
+    def my_trip(self):
+        query = "SELECT * from trips where organizer_id = :id"
+        data = {'id': session['id']}
+        # result_mytrip = self.db.get_one(query, data)
+        # return {"status": True, 'mytrips': mytrips}
+        return self.db.get_one(query, data)

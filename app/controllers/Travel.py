@@ -1,5 +1,4 @@
 from system.core.controller import *
-from system.core.model import Model
 from flask import Flask, flash, session
 
 class Travel(Controller):
@@ -25,6 +24,14 @@ class Travel(Controller):
             for message in trips['errors']:
                 flash(message)
             return self.load_view('addplan.html')
+            # return redirect('/dashboard')
         else:
-            return self.load_view('addplan.html')
+            # return self.load_view('addplan.html')
+            return redirect('/dashboard')
 
+    def dashboard(self):
+        mytrips = self.models['Travel'].my_trip()
+        print ('%' * 25)
+        print mytrips
+        print ('%' * 25)
+        return self.load_view('dashboard.html', mytrips=mytrips)
