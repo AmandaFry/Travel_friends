@@ -52,14 +52,15 @@ class Travel(Model):
         today = datetime.now().strftime("%Y-%m-%d")
         print ('^' * 25)
         print today
+        print "User logged in: ", session['id']
         print ('^' * 25)
         
         if len(trip_info['destination']) < 2:
             travel_erorrs.append("Please enter a valid destination")
         elif len(trip_info['plan']) < 2:
             travel_erorrs.append("Please enter a valid plan")
-        elif not NOSPACE_REGEX.match(trip_info['plan']):
-            travel_erorrs.append("Plan cannot be just spaces")
+        # elif not NOSPACE_REGEX.match(trip_info['plan']):
+        #     travel_erorrs.append("Plan cannot be just spaces")
         elif today > trip_info['start_date']:
             travel_erorrs.append("Start date must be in the future")
         elif today > trip_info['end_date']:
@@ -69,4 +70,13 @@ class Travel(Model):
         if travel_erorrs:
             return {"status": False, "errors": travel_erorrs}
         else:
+            sql = "INSERT into trips (organizer_id, destination, plan, start_date, end_date, created_at, updated_at) values(:organizer_id, :destination, :plan, :start_date, end_date, NOW(), NOW())"
+            data = {
+                'organizer_id': session['id'], 
+                'destination': trip_info['destination'],
+                'plan' : trip_info['plan'],
+                'start_date' : trip_info['start_date'],
+                'end_date' : trip_info['end_date'] 
+            }
+            self.db.query_db(sql, data) #run the insert
             return {"status": True}
